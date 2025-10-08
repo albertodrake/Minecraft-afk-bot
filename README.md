@@ -46,7 +46,8 @@ cd minecraft-afk-bot
 npm install
 ```
 
-🧾 Configuration
+##🧾 Configuration
+
 Edit the bot-authme-first.js file with your own settings:
 
 ```
@@ -92,13 +93,13 @@ Edit the bot-authme-first.js file with your own settings:
 ```
 
 
-▶️ Running the Bot
+## ▶️ Running the Bot
 ```
 node bot-authme-first.js
 
 ```
 
-⚡ Advanced Usage
+## ⚡ Advanced Usage
 🧭 Customize pathfinding coordinates for your AFK spot
 
 💬 Enable periodic chat messages for server presence
@@ -107,7 +108,7 @@ node bot-authme-first.js
 
 🧩 Extend functionality with custom Mineflayer plugins
 
-🧰 Requirements
+## 🧰 Requirements
 Node.js v18+
 
 Minecraft Java Edition 1.18+
@@ -116,12 +117,12 @@ AuthMe plugin on the target server
 
 (Optional) BungeeCord or Multiplex network setup
 
-🧑‍💻 Contributing
+## 🧑‍💻 Contributing
 Contributions are welcome!
 Submit issues and pull requests to improve features or fix bugs.
 Please follow best practices and ensure backward compatibility.
 
-⚖️ License
+## ⚖️ License
 This project is licensed under the MIT License.
 See the LICENSE file for details.
 
@@ -132,7 +133,7 @@ AuthMe Reloaded Plugin
 
 Prismarine.js Ecosystem
 
-📞 Contact
+## 📞 Contact
 Created and maintained by:
 👤 Alberto Drake
 💬 For inquiries or collaborations, reach out via GitHub Issues or Discussions.
