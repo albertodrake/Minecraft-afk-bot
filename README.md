@@ -59,7 +59,7 @@ cd minecraft-afk-bot
 npm install
 ```
 
-##🧾 Configuration
+## 🧾 Configuration
 
 Edit the bot-authme-first.js file with your own settings:
 
