@@ -1,50 +1,55 @@
-# Minecraft-afk-bot
-Minecraft AFK Bot with AuthMe and Server Selector
-![Minecraft Banner](https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft
-
-This is a sophisticated Minecraft AFK bot built with Mineflayer, featuring:
-
-Full AuthMe plugin compatibility for secure server authentication
-
-Automatic server switching with custom commands (e.g., /server survival)
-
-Smart anti-AFK mechanisms to keep the bot active
-
-Robust auto-reconnect and error handling
-
-Easy configuration for any Minecraft server version
-
-Designed to work flawlessly on Minecraft Java Edition networks running AuthMe and BungeeCord/Multiplex server networks
-
-Features
-AuthMe Authentication: Automatic registration and login handling via chat detection with retries.
-
-Server Selector Command: Joins designated server after authentication using custom commands like /server survival.
-
-Anti-AFK: Periodic jumps, sneaks, and random looks to prevent disconnection.
-
-Movement: Pathfinding to configured coordinates for AFK spot.
-
-Auto Reconnect: Re-establishes connection if disconnected or kicked.
-
-Chat Logging and Messaging: Logs chat and can periodically send messages.
-
-Cross-Platform: Runs on Windows, Linux, Docker containers, and Pterodactyl panels.
-
-Usage
-Installation
+# 🧠 Minecraft AFK Bot with AuthMe and Server Selector
 
 
-bash
-git clone https://github.com/yourusername/minecraft-afk-bot.git
+<p align="center">
+  <img src="https://img.shields.io/badge/Made%20by-Alberto%20Drake-blue?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Minecraft-Java%20Edition-green?style=for-the-badge&logo=minecraft">
+  <img src="https://img.shields.io/github/stars/yourusername/minecraft-afk-bot?style=for-the-badge&color=yellow">
+  <img src="https://img.shields.io/github/forks/yourusername/minecraft-afk-bot?style=for-the-badge&color=orange">
+  <img src="https://img.shields.io/github/license/yourusername/minecraft-afk-bot?style=for-the-badge&color=red">
+</p>
+
+---
+
+## 🚀 Overview
+
+This is a **sophisticated Minecraft AFK bot** built with [Mineflayer](https://github.com/PrismarineJS/mineflayer), featuring:
+
+- ✅ **Full AuthMe plugin compatibility** for secure authentication  
+- 🔁 **Automatic server switching** with custom commands (e.g., `/server survival`)  
+- 💤 **Smart anti-AFK mechanisms** to stay active  
+- ⚙️ **Robust auto-reconnect and error handling**  
+- 🧩 **Easy configuration** for any Minecraft server version  
+- 🌍 **Designed for networks** using AuthMe + BungeeCord/Multiplex  
+
+---
+
+## ✨ Features
+
+| Feature | Description |
+|----------|-------------|
+| 🔐 **AuthMe Authentication** | Auto register/login via chat detection and retry logic |
+| 🌐 **Server Selector** | Automatically join servers using commands like `/server survival` |
+| 💤 **Anti-AFK System** | Periodic jumps, sneaks, and random looks to avoid kick |
+| 🧭 **Movement & Pathfinding** | Moves to configured AFK coordinates using Mineflayer pathfinder |
+| 🔁 **Auto Reconnect** | Reconnects automatically after disconnection or kick |
+| 💬 **Chat Logging** | Logs chat messages and can send periodic updates |
+| 🧩 **Cross-Platform Support** | Works on Windows, Linux, Docker, and Pterodactyl panels |
+
+---
+
+## ⚙️ Installation
+
+```bash
+git clone https://github.com/albertodrake/minecraft-afk-bot.git
 cd minecraft-afk-bot
 npm install
-Configuration
-Edit the bot-authme-first.js file for these settings:
+```
 
+🧾 Configuration
+Edit the bot-authme-first.js file with your own settings:
 
-
-json
+```
 {
   "server": {
     "host": "your.minecraft.server.ip",
@@ -84,41 +89,53 @@ json
     }
   }
 }
-Run the Bot
+```
 
 
-bash
+▶️ Running the Bot
+```
 node bot-authme-first.js
-Advanced Usage
-Customize pathfinding coordinates for your AFK spot.
 
-Enable chat messaging for periodic presence updates.
+```
 
-Modify delay timings for server joining and authentication retries.
+⚡ Advanced Usage
+🧭 Customize pathfinding coordinates for your AFK spot
 
-Easily extend with custom Minecraft bot features using Mineflayer plugins.
+💬 Enable periodic chat messages for server presence
 
-Requirements
-Node.js v18 or higher
+⏱️ Modify timing delays for joining servers or retrying AuthMe login
 
-Minecraft Java Edition 1.8 or above compatible server
+🧩 Extend functionality with custom Mineflayer plugins
 
-AuthMe plugin installed server-side for authentication
+🧰 Requirements
+Node.js v18+
 
-BungeeCord/Multiplex network for server switching (optional)
+Minecraft Java Edition 1.18+
 
-Contributing
-Feel free to submit issues and pull requests for improvements or bug fixes.
+AuthMe plugin on the target server
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+(Optional) BungeeCord or Multiplex network setup
 
-Acknowledgments
+🧑‍💻 Contributing
+Contributions are welcome!
+Submit issues and pull requests to improve features or fix bugs.
+Please follow best practices and ensure backward compatibility.
+
+⚖️ License
+This project is licensed under the MIT License.
+See the LICENSE file for details.
+
+💎 Acknowledgments
 Mineflayer Project
 
 AuthMe Reloaded Plugin
 
 Prismarine.js Ecosystem
 
-Contact
-Created and maintained by Alberto Drake
+📞 Contact
+Created and maintained by:
+👤 Alberto Drake
+💬 For inquiries or collaborations, reach out via GitHub Issues or Discussions.
+
+⭐ If you like this project, don’t forget to give it a star!
+Your support motivates future updates and improvements. 🌟
