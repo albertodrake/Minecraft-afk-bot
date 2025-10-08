@@ -2,11 +2,24 @@
 
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Made%20by-Alberto%20Drake-blue?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Minecraft-Java%20Edition-green?style=for-the-badge&logo=minecraft">
-  <img src="https://img.shields.io/github/stars/yourusername/minecraft-afk-bot?style=for-the-badge&color=yellow">
-  <img src="https://img.shields.io/github/forks/yourusername/minecraft-afk-bot?style=for-the-badge&color=orange">
-  <img src="https://img.shields.io/github/license/yourusername/minecraft-afk-bot?style=for-the-badge&color=red">
+  <a href="https://github.com/albertodrake/minecraft-afk-bot/stargazers">
+    <img src="https://img.shields.io/github/stars/albertodrake/minecraft-afk-bot?style=for-the-badge&color=yellow" alt="GitHub stars">
+  </a>
+  <a href="https://github.com/albertodrake/minecraft-afk-bot/network/members">
+    <img src="https://img.shields.io/github/forks/albertodrake/minecraft-afk-bot?style=for-the-badge&color=orange" alt="GitHub forks">
+  </a>
+  <a href="https://github.com/albertodrake/minecraft-afk-bot/watchers">
+    <img src="https://img.shields.io/github/watchers/albertodrake/minecraft-afk-bot?style=for-the-badge&color=blue" alt="GitHub watchers">
+  </a>
+  <a href="https://github.com/albertodrake/minecraft-afk-bot/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/albertodrake/minecraft-afk-bot?style=for-the-badge&color=red" alt="License">
+  </a>
+  <a href="https://github.com/albertodrake/minecraft-afk-bot/commits/main">
+    <img src="https://img.shields.io/github/last-commit/albertodrake/minecraft-afk-bot?style=for-the-badge&color=brightgreen" alt="Last Commit">
+  </a>
+  <a href="https://github.com/albertodrake/minecraft-afk-bot">
+    <img src="https://img.shields.io/github/languages/code-size/albertodrake/minecraft-afk-bot?style=for-the-badge&color=purple" alt="Code Size">
+  </a>
 </p>
 
 ---
