@@ -30,7 +30,6 @@
     </a>
     <img src="https://img.shields.io/badge/code%20size-12345%20lines-success.svg?style=for-the-badge" alt="Code Size" />
 </p>
-## Overview
 
 ---
 ## 🚀 Overview
