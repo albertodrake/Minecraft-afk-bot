@@ -29,7 +29,10 @@
         <img src="https://img.shields.io/badge/views-456-orange.svg?style=for-the-badge" alt="Views" />
     </a>
     <img src="https://img.shields.io/badge/code%20size-12345%20lines-success.svg?style=for-the-badge" alt="Code Size" />
+<img src="https://views-counter.vercel.app/badge?pageId=https%3A%2F%2Fgithub%2Ecom%2Falbertodrake%2FMinecraft-afk-bot&leftColor=000000&rightColor=0adb3f&type=total&label=TOTAL%20VIEWS&style=lower" alt="Views Counter">
+
 </p>
+
 
 ---
 ## 🚀 Overview
