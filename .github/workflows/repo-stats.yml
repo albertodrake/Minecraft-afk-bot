@@ -1,0 +1,60 @@
+name: Track Repository Stats
+
+on:
+  schedule:
+    # Runs automatically at minute 0 past every hour
+    - cron: '0 * * * *'
+  workflow_dispatch: # Allows you to trigger it manually
+
+permissions:
+  contents: write 
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch Stats and Update File
+        run: |
+          # 1. Setup folder and static file path
+          FOLDER="repo-stats"
+          mkdir -p $FOLDER
+          FILE="$FOLDER/stats.md"
+          LAST_UPDATED=$(date -u +'%Y-%m-%d %H:%M:%S UTC')
+
+          # 2. Fetch Repo Info (Stars, Forks, Watchers)
+          REPO_DATA=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }})
+          STARS=$(echo "$REPO_DATA" | jq '.stargazers_count')
+          FORKS=$(echo "$REPO_DATA" | jq '.forks_count')
+          WATCHERS=$(echo "$REPO_DATA" | jq '.subscribers_count')
+
+          # 3. Fetch Traffic Views (Last 14 days)
+          TRAFFIC_DATA=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/traffic/views)
+          VIEWS=$(echo "$TRAFFIC_DATA" | jq '.count')
+          UNIQUE_VIEWS=$(echo "$TRAFFIC_DATA" | jq '.uniques')
+
+          # 4. Generate/Overwrite the Markdown File
+          # Using single '>' on the first line overwrites the file entirely instead of appending
+          echo "# Repository Stats for ${{ github.repository }}" > "$FILE"
+          echo "**⏱️ Last Updated:** $LAST_UPDATED" >> "$FILE"
+          echo "" >> "$FILE"
+          echo "- **⭐ Stars:** $STARS" >> "$FILE"
+          echo "- **🍴 Forks:** $FORKS" >> "$FILE"
+          echo "- **👀 Watchers:** $WATCHERS" >> "$FILE"
+          echo "- **📈 Total Views (Last 14 days):** $VIEWS" >> "$FILE"
+          echo "- **👤 Unique Visitors (Last 14 days):** $UNIQUE_VIEWS" >> "$FILE"
+
+      - name: Commit and Push Changes
+        run: |
+          # Configure Git as the GitHub Actions bot
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Add the specific static file to tracking
+          git add "$FILE"
+          
+          # Commit and push
+          git commit -m "docs: update repo stats - $LAST_UPDATED" || echo "No changes to commit"
+          git push
