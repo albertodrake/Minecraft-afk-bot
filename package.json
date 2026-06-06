@@ -1,6 +1,6 @@
 {
   "name": "minecraft-afk-bot-fixed",
-  "version": "1.0.0",
+  "version": "26.1.2",
   "description": "Fixed Minecraft AFK Bot with manual AuthMe support",
   "main": "bot.js",
   "scripts": {
