@@ -120,9 +120,10 @@ function createBot() {
     const lowerMessage = message.toLowerCase();
     
     // Server join success detection (for survival server)
-    if (serverJoined && lowerMessage.includes('survival') && 
+    if (!serverJoined && lowerMessage.includes('survival') && 
         (lowerMessage.includes('joined') || lowerMessage.includes('connected') || lowerMessage.includes('welcome'))) {
       console.log('🌍 Successfully joined survival server!');
+      serverJoined = true;
       console.log('📋 Step 3: Starting bot activities...');
       setTimeout(startBotActivities, 2000);
     }
@@ -164,6 +165,7 @@ function createBot() {
         }, config.serverCommands.delay);
       } else {
         // If no server command, just start activities
+        serverJoined = true;
         setTimeout(startBotActivities, 2000);
       }
     }
@@ -265,12 +267,12 @@ function joinSpecificServer() {
   
   bot.chat(config.serverCommands.joinServer);
   console.log(`📤 Sent server join command: ${config.serverCommands.joinServer}`);
-  serverJoined = true;
 
   // If no response indicating successful server join after 10 seconds, start activities anyway
   setTimeout(() => {
     if (authmeCompleted && !serverJoined) {
       console.log('⚠️ No server join confirmation, starting activities anyway...');
+      serverJoined = true;
       startBotActivities();
     }
   }, 10000);
@@ -310,6 +312,7 @@ function attemptAuthMeLogin() {
           joinSpecificServer();
         }, config.serverCommands.delay);
       } else {
+        serverJoined = true;
         startBotActivities();
       }
     }
