@@ -60,10 +60,37 @@ let loginAttempts = 0;
 let serverJoined = false;
 let authmeCompleted = false;
 const maxLoginAttempts = 3;
+let antiAfkInterval = null;
+let chatInterval = null;
+let reconnectTimeout = null;
+
+function scheduleReconnect() {
+  if (!config.features.autoReconnect.enabled) return;
+  if (reconnectTimeout) return;
+
+  console.log(`🔄 Reconnecting in ${config.features.autoReconnect.delay / 1000} seconds...`);
+  reconnectTimeout = setTimeout(() => {
+    reconnectTimeout = null;
+    createBot();
+  }, config.features.autoReconnect.delay);
+}
 
 function createBot() {
   console.log('🤖 Creating bot...');
   
+  if (reconnectTimeout) {
+    clearTimeout(reconnectTimeout);
+    reconnectTimeout = null;
+  }
+  if (antiAfkInterval) {
+    clearInterval(antiAfkInterval);
+    antiAfkInterval = null;
+  }
+  if (chatInterval) {
+    clearInterval(chatInterval);
+    chatInterval = null;
+  }
+
   const botOptions = {
     host: config.server.host,
     port: config.server.port,
@@ -220,18 +247,12 @@ function createBot() {
 
   bot.on('kicked', (reason) => {
     console.log('⚠️ Bot was kicked:', reason);
-    if (config.features.autoReconnect.enabled) {
-      console.log(`🔄 Reconnecting in ${config.features.autoReconnect.delay / 1000} seconds...`);
-      setTimeout(createBot, config.features.autoReconnect.delay);
-    }
+    scheduleReconnect();
   });
 
   bot.on('end', () => {
     console.log('🔌 Bot disconnected from server');
-    if (config.features.autoReconnect.enabled) {
-      console.log(`🔄 Reconnecting in ${config.features.autoReconnect.delay / 1000} seconds...`);
-      setTimeout(createBot, config.features.autoReconnect.delay);
-    }
+    scheduleReconnect();
   });
 
   bot.on('death', () => {
@@ -354,9 +375,13 @@ function startBotActivities() {
 }
 
 function startAntiAFK() {
+  if (antiAfkInterval) {
+    clearInterval(antiAfkInterval);
+    antiAfkInterval = null;
+  }
   const antiAfkConfig = config.features.antiAFK;
   
-  setInterval(() => {
+  antiAfkInterval = setInterval(() => {
     if (!bot || !bot._client || bot._client.state !== 'play') return;
     
     try {
@@ -392,10 +417,14 @@ function startAntiAFK() {
 }
 
 function startChatMessages() {
+  if (chatInterval) {
+    clearInterval(chatInterval);
+    chatInterval = null;
+  }
   const chatConfig = config.features.chatMessages;
   let messageIndex = 0;
   
-  setInterval(() => {
+  chatInterval = setInterval(() => {
     if (!bot || !bot._client || bot._client.state !== 'play') return;
     
     try {
@@ -439,6 +468,9 @@ createBot();
 // Graceful shutdown
 process.on('SIGINT', () => {
   console.log('🛑 Shutting down bot...');
+  if (reconnectTimeout) clearTimeout(reconnectTimeout);
+  if (antiAfkInterval) clearInterval(antiAfkInterval);
+  if (chatInterval) clearInterval(chatInterval);
   if (bot) {
     bot.quit('Bot shutting down');
   }
@@ -447,6 +479,9 @@ process.on('SIGINT', () => {
 
 process.on('SIGTERM', () => {
   console.log('🛑 Received SIGTERM, shutting down bot...');
+  if (reconnectTimeout) clearTimeout(reconnectTimeout);
+  if (antiAfkInterval) clearInterval(antiAfkInterval);
+  if (chatInterval) clearInterval(chatInterval);
   if (bot) {
     bot.quit('Bot shutting down');
   }
@@ -455,10 +490,7 @@ process.on('SIGTERM', () => {
 
 process.on('uncaughtException', (error) => {
   console.error('💥 Uncaught Exception:', error);
-  if (config.features.autoReconnect.enabled) {
-    console.log('🔄 Restarting bot due to uncaught exception...');
-    setTimeout(createBot, 5000);
-  }
+  scheduleReconnect();
 });
 
 process.on('unhandledRejection', (reason, promise) => {
