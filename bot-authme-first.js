@@ -431,7 +431,7 @@ if (config.bot.authmePassword === 'change_this_password') {
   console.log('');
 }
 
-createBot();
+bot();
 
 // Graceful shutdown
 process.on('SIGINT', () => {
