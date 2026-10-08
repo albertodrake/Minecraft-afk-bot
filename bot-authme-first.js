@@ -4,15 +4,15 @@ const { pathfinder, Movements, goals } = require('mineflayer-pathfinder');
 // Configuration - Edit these values for your server
 const config = {
   server: {
-    host: 'localhost', // Change to your server IP
-    port: 25565,
+    host: 'Damnserver-5jxm.aternos.me', // Change to your server IP
+    port: 19132,
     version: '1.20.4' // Change to your server version
   },
   bot: {
-    username: 'AFKBot', // Change to your desired bot name
-    auth: 'offline', // 'offline', 'microsoft', or 'mojang'
-    password: '', // Minecraft account password (if using premium auth)
-    authmePassword: 'change_this_password' // AuthMe password for /register and /login
+    username: 'subtoem', // Change to your desired bot name
+    auth: 'microsoft', // 'offline', 'microsoft', or 'mojang'
+    password: 'nigaboy', // Minecraft account password (if using premium auth)
+    authmePassword: 'nigaboy' // AuthMe password for /register and /login
   },
   serverCommands: {
     enabled: true,
@@ -37,7 +37,7 @@ const config = {
       jump: true,
       sneak: false,
       look: true,
-      interval: 30000 // 30 seconds
+      interval: 30 // 30 seconds
     },
     chatMessages: {
       enabled: false,
