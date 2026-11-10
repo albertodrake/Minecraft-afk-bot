@@ -2,10 +2,10 @@
   "name": "minecraft-afk-bot-fixed",
   "version": "1.0.0",
   "description": "Fixed Minecraft AFK Bot with manual AuthMe support",
-  "main": "bot.js",
+  "main": "bot-authme-first.js",
   "scripts": {
-    "start": "node bot.js",
-    "dev": "node bot.js"
+    "start": "node bot-authme-first.js",
+    "dev": "node bot-authme-first.js"
   },
   "dependencies": {
     "mineflayer": "^4.20.1",
